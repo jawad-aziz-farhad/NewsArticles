@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Home
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="dark" icon-only *ngFor="let button of buttons" routerLink="/settings">
+        <ion-icon [name]="button.name"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <!-- <header pageTitle="Home"></header> -->
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card">
+    <ion-img [src]="image"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>{{ quote?.author }}</ion-card-subtitle>
+      <ion-card-title>{{ quote?.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ quote?.quote }}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form"> 
+    <ion-list>
+      <ion-item-divider color="secondary">
+        <ion-label>
+          News Source:
+        </ion-label>
+      </ion-item-divider>
+      <ion-radio-group (ionChange)="onSourceChange($event)" formControlName="source" >
+        <ion-item *ngFor="let _source of sources; let i=index;" >
+          <ion-label>{{ _source?.name }}</ion-label>
+          <ion-radio value="{{_source?.value}}" [checked]="form.get('source').value === _source.value"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+
+      <ion-item-divider color="secondary">
+        <ion-label>
+          Title Font Size:
+        </ion-label>
+      </ion-item-divider>
+      
+      <ion-item lines="none">
+        <ion-range min="14" max="24" color="secondary" formControlName="title-font" (ionChange)="onHeadingFontChange($event)">
+          <ion-label slot="start">14</ion-label>
+          <ion-label slot="end">24</ion-label>
+        </ion-range>
+      </ion-item>
+      
+      <ion-item-divider color="secondary">
+        <ion-label>
+            Description Font Size:
+        </ion-label>
+      </ion-item-divider>
+      <ion-item lines="none">
+        <ion-range min="8" max="16" color="secondary" formControlName="desc-font" (ionChange)="onDescFontChange($event)" >
+          <ion-label slot="start">8</ion-label>
+          <ion-label slot="end">16</ion-label>
+        </ion-range>
+      </ion-item>
+    
+    </ion-list>
+    <ion-button expand="full" (click)="savePreferences()">Save Preferences</ion-button>
+  </form>
+</ion-content>

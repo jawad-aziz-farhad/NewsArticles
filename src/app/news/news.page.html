@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ (source?.substring(0,1) | uppercase) + source?.substring(1) }} News</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="dark" icon-only *ngFor="let button of buttons" routerLink="/settings">
+        <ion-icon [name]="button.name"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card" *ngFor="let article of articles; let i=index;" (click)="openArticle(article)">
+    <ion-img [src]="article?.urlToImage || '/assets/shapes.svg'"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>{{ article?.author }}</ion-card-subtitle>
+      <ion-card-title [ngStyle]="{'font-size.px': titleFont ? titleFont : ''}">{{ article?.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p [ngStyle]="{'font-size.px': descFont ? descFont : ''}">{{ article?.description }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

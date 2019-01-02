@@ -1,0 +1,14 @@
+<ion-toolbar>
+  <ion-buttons slot="start" >
+    <ion-menu-button color="dark"></ion-menu-button>
+  </ion-buttons>  
+
+  <ion-title>{{ pageTitle }}</ion-title>
+
+  <ion-buttons slot="end" *ngIf="buttons.length > 0 && pageTitle !== 'Settings'">
+    <ion-button color="dark" icon-only *ngFor="let button of buttons" (click)="clickCallBack(button.name)">
+      <ion-icon [name]="button.name"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+</ion-toolbar>
